@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <h1>calculaetr</h1>
+
+    <input name="a"><input name="b">
+    <br>
+    <input type="radio" name="minus" value="minus">minus<br>
+    <input type="radio" name="minus" value="abs">abs<br>
+    <input type="radio" name="minus" value="divide">divide<br>
+    <input type="radio" name="minus" value="multi">multi<br>
+    <input type="radio" name="minus" value="plus">plus<br>
+
+
+    <button name="result" value="full" data-whereismydata="api.php">result</button>
+    <br>
+    <input name="resultValue">
+
+    <script>
+         var result = getElementsByName('result')
+        result.addEventListener('click', aClick, true);
+
+        function aClick(event) {
+         var result = getElementsByName('result')
+            event.preventDefault();
+            page = this.getAttribute('');
+            getResult(page);
+            function getResult(data) {
+                var request = new XMLHttpRequest()
+                request.open(get, data, true)
+                request.send()
+            
+                
+               
+                request.onreadystatechange = function () {
+
+                    if (this.readyState == 4) {
+                        var response = JSON.parse(request.responseText);
+                        document.getElementsByName('resultValue').value = request.responseText;
+                    }
+                }
+            }
+        }
+    </script>
+</body>
